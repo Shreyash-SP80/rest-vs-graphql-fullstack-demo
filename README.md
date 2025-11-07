@@ -376,3 +376,66 @@ but these often re-create GraphQL concepts.
 They coexist.  
 Many companies use REST for public endpoints and GraphQL for internal/mobile apps.
 
+---
+
+## 9) Pros & Cons Summary
+
+### REST — Advantages
+- Simple mental model (URL + verb)
+- Native HTTP caching
+- Mature tooling, logs, and monitoring
+- Great for public, cacheable resources
+
+### REST — Drawbacks
+- Over-fetching and under-fetching are common
+- Versioning overhead (/v1, /v2)
+- The server dictates the response shape
+
+
+---
+
+## 9) Pros & Cons Summary
+
+### REST — Advantages
+- Simple mental model (URL + verb)
+- Native HTTP caching
+- Mature tooling, logs, and monitoring
+- Great for public, cacheable resources
+
+### REST — Drawbacks
+- Over-fetching and under-fetching are common
+- Versioning overhead (/v1, /v2)
+- The server dictates the response shape
+
+
+---
+
+### GraphQL — Advantages
+- Client controls the response shape
+- Fewer round trips, smaller payloads
+- Strongly typed, self-documenting schema
+- Evolves without breaking existing clients
+
+### GraphQL — Drawbacks
+- More setup and learning required
+- Harder HTTP caching; relies on client-side caching
+- Needs protection against expensive/deep queries
+- Observability and rate-limiting are more complex
+
+--- 
+
+## 10) REST vs GraphQL — Key Differences (Table)
+
+| Dimension        | REST                                             | GraphQL                                                    |
+|------------------|--------------------------------------------------|------------------------------------------------------------|
+| Endpoints        | Many resource URLs (e.g., `/users`, `/posts`)    | Single endpoint (e.g., `/graphql`)                         |
+| Data Shape       | Fixed by server                                  | Chosen by client per query                                 |
+| Fetch Pattern    | Multiple round trips common                       | Compose everything in one request                          |
+| Over-fetching    | Common                                            | Avoided (ask for exact fields)                             |
+| Under-fetching   | Common                                            | Avoided (join related objects)                             |
+| Caching          | Easy with HTTP for GET requests                   | Harder with HTTP; relies on client caching (Apollo/Relay)  |
+| Versioning       | Frequent (`/v1`, `/v2`)                           | Rare; evolve schema by adding fields                       |
+| Tooling          | Mature, widespread ecosystem                      | Strong schema tooling (SDL, codegen, IDEs)                 |
+| Error Signaling  | HTTP status codes                                 | Errors array inside JSON response                          |
+| Learning Curve   | Low                                               | Medium / Higher                                            |
+| Best For         | Simple, cacheable resources; public APIs          | Complex UIs, mobile apps, multiple backends, rapid iteration |
