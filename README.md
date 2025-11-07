@@ -118,6 +118,7 @@ When the response structure changes, APIs often introduce:
 Server controls what the response looks like.  
 Clients must adapt to server changes.
 
+---
 
 ## ✅ 2) What is GraphQL?
 
@@ -252,6 +253,7 @@ Unlike REST, the client asks **exactly for the fields it needs**, and the server
   Harder compared to REST because everything goes through a single endpoint;  
   you cannot rate-limit easily by path or resource.
 
+---
 
 ## 3) Practical Examples Side-by-Side
 
@@ -297,6 +299,8 @@ Returns the full user object, even fields you might not need.
 ```
  = One request returns everything.
 
+---
+
 ## 4) Performance & Payloads
 
 REST can be faster when the response fits a stable, well-defined resource that can be cached easily  
@@ -327,6 +331,8 @@ Always responds with 200 OK at the HTTP layer, and places errors inside the "err
     }
 ```
 Internal errors can be mapped to HTTP codes, but many implementations do not.
+
+---
 
 ## 6) Security & Governance
 
@@ -376,21 +382,6 @@ but these often re-create GraphQL concepts.
 They coexist.  
 Many companies use REST for public endpoints and GraphQL for internal/mobile apps.
 
----
-
-## 9) Pros & Cons Summary
-
-### REST — Advantages
-- Simple mental model (URL + verb)
-- Native HTTP caching
-- Mature tooling, logs, and monitoring
-- Great for public, cacheable resources
-
-### REST — Drawbacks
-- Over-fetching and under-fetching are common
-- Versioning overhead (/v1, /v2)
-- The server dictates the response shape
-
 
 ---
 
@@ -439,3 +430,48 @@ Many companies use REST for public endpoints and GraphQL for internal/mobile app
 | Error Signaling  | HTTP status codes                                 | Errors array inside JSON response                          |
 | Learning Curve   | Low                                               | Medium / Higher                                            |
 | Best For         | Simple, cacheable resources; public APIs          | Complex UIs, mobile apps, multiple backends, rapid iteration |
+
+---
+
+## 11) Minimal Examples (for reference)
+
+### REST — Create a todo
+```
+    POST /todos
+    Body: { "title": "Read docs" }
+```
+
+### GraphQL — Create a todo (mutation)
+```graphql
+    mutation AddTodo($title: String!) {
+      addTodo(title: $title) { 
+        id 
+        title 
+        done 
+      }
+    }
+```
+
+---
+
+## 12) ASCII Figures (How they feel)
+
+### REST
+```
+    [Client] --GET /users/42--> [Server]
+    <-- { id, name, email, phone, address, ... }
+```
+
+---
+
+## 13) Final Take
+
+If your app feels like “I keep hitting 3–5 endpoints to build one screen,”  
+GraphQL likely helps.
+
+If your app feels like “I serve simple, cacheable resources to many clients,”  
+REST is a great fit.
+
+Many real systems mix both:  
+REST for public/static data,  
+GraphQL for application UIs.
