@@ -7,7 +7,7 @@ import {
   GraphQLList,
   GraphQLNonNull,
 } from "graphql";
-
+ 
 import Todo from "../models/Todo.js";
 
 // ✅ Todo Type
@@ -92,3 +92,4 @@ export default new GraphQLSchema({
   query: Query,
   mutation: Mutation,
 });
+
