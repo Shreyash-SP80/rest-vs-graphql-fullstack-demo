@@ -1,3 +1,7 @@
+<!--
+Api is used to make communication between two applications
+-->
+
 # REST API vs GraphQL — Concepts, Examples, Pros & Cons
 
 This document explains **REST** and **GraphQL** in simple, practical terms with examples, when to use each, their strengths, weaknesses, and a side-by-side comparison.
