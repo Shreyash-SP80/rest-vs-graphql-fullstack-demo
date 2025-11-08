@@ -4,7 +4,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import { graphqlHTTP } from "express-graphql";
 import schema from "./graphql/schema.js";
-import todoRouter from "./rest/todos.js";
+import todoRouter from "./rest/todos.js"; 
 
 const app = express();
 app.use(cors());
@@ -34,3 +34,4 @@ const PORT = process.env.PORT || 4000;
     process.exit(1);
   }
 })();
+
