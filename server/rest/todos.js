@@ -19,6 +19,12 @@ router.get("/", async (req, res) => {
   res.json(formatted);
 });
 
+// router.get("/", async (req, res) => {
+//   const items = await Todo.find().sort({ createdAt: -1 });
+//   res.json(items);
+// });
+
+
 // ✅ POST /api/todos -> create
 router.post("/", async (req, res) => {
   if (!req.body?.title) {
@@ -65,3 +71,4 @@ router.delete("/:id", async (req, res) => {
 });
 
 export default router;
+
